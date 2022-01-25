@@ -1,0 +1,248 @@
+{% extends "base.html" %}
+{% block title %}
+Search
+{% endblock %}
+
+{% block content%}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/csearch.css'%}">
+
+
+<script src="https://kit.fontawesome.com/9234ad5b48.js" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="position: fixed; width: 100%;">
+    <a class="navbar-brand mb-0 h1" href="{% url 'twolink' %}">{{shop}}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'twolink' %}"> Home<span class="sr-only">(current)</span></a>
+          </li>
+              <li class="nav-item active">
+              <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
+            </li>
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <a href="{% url 'login' %}"  class="btn btn-dark my-2 my-sm-0"  type="submit">  Logout</a>
+          
+        </form>
+      </div>
+    </nav>
+
+             
+            
+    <div class="wrap"> 
+
+    <div class="box">
+  
+        <form action="" method="post">
+            {% csrf_token %}
+         
+         <div style="margin-left: 3%;">
+<hr>
+            <h3> Hi, Cashier  </h3> 
+            <table style="margin-left: 5%;">
+                <thead>
+                    <tr>
+
+                        <th>Bill Number &nbsp; </th>
+                        <th><input value={{bill}} class="form-control" style="width: 25%; text-align: center;" readonly>  
+                        </th>
+                    </tr>
+
+                </thead>
+
+            </table>
+      
+
+         </div>
+ 
+
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                <strong>Message: </strong>{{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            
+            {% endfor %}
+                  
+<br> 
+
+            <div class="grid-container">
+            <div class="form-group">
+                
+                <label for="ab" class="control-label col-sm-2">  <strong> Item_Id </strong></label>
+                <div class="col-sm-16">          
+                 
+                  <input  type="text"  class="form-control" id='ab' pattern="\d*" maxlength="4"  name="id"  placeholder='Enter 4 Digit Id' required> 
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="bc" class="control-label col-sm-2"><strong>Quantity</strong></label>
+                <div class="col-sm-16">          
+                    <input  type="text" class="form-control" id='bc' pattern="\d*" maxlength="3"  name="quant"  placeholder='1-999 digits' required>
+                </div>
+            </div>
+        </div>
+
+              <table  class='next'>
+                <thead>
+                    <tr>
+                    <th > <input type="submit" value="Add Item" class="btn btn-success" >&emsp;</th> 
+                    <th><div > <a href="{% url 'search' %}" class="btn btn-info" > Next Order </a> </div></th>
+                </tr>
+                </thead>
+
+
+
+              </table>
+
+<hr>
+
+
+             
+
+                     
+            </form>
+
+                    <table class="table" style="text-align: center;">
+                        <thead class="table -info">
+                            <tr>
+                        <th scope="col">Item Name</th>
+                        <th scope="col">Rate</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Erase</th>
+                        </thead></tr>
+                        {%for item in sales%}
+                        <tbody>
+                        <tr>
+                            <td>{{ item.Product_name }}</td>
+                            <td>{{ item.Price }}</td>
+                            <td>{{ item.Quantity }}</td>
+                            <td>{{ item.Total }}</td>
+                            <td><a href="{% url 'remove' item.id %}" style="font-size: 130%; color: red; text-align: center;"> <i class="fas fa-times"></i></a></td>
+                        </tr>
+                        {% endfor %}
+                        <tr>
+
+                            {% if checking.Total__sum is empty %}
+
+                            {% else %}
+                            <td style="padding-left: 1%;"> Total Amount</td>
+                            <td></td>
+                            <td></td>
+                            <td> {{checking.Total__sum}} </td>
+                         
+                            <td>   <form action="{% url 'export' %}" method='POST'>
+                                {% csrf_token %}
+                                <input type="submit" value="GenerateBill" class="btn btn-success">
+                           
+                            </form></td> {% endif %}
+                        </tr>
+                       </tbody>
+                       
+                    </table>
+                      
+                        
+  
+</div>
+       
+
+<div class="box" >
+    
+<div class='righti'>
+
+    <div style=" padding-left: 2%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+        <h2>Details of Available Items</h2> 
+<hr>
+    </div>
+                        
+          <div style=" padding-left: 10%; width: 70%;">              
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                        <th scope="col">Item_Id</th>
+                        <th scope="col" > Item Name</th></tr>
+                    </thead>
+                    <tbody>
+                        {%for item in items%}
+                        <tr scope="row">
+                            <td> {{ item.Product_Id }}</td>
+                            <td>{{ item.Product_name }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+    
+</div>
+
+  
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

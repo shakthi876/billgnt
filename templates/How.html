@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{%block title%}
+ Delete Item
+ {%endblock %}
+{%block content%}
+
+{% load static %}
+    <style>
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    #head{
+        text-align: center;
+        margin-top: 3%;
+        font-size: 200%;
+    }
+    #body1{
+       padding-left: 20%;
+       margin-top: 3%; 
+       font-size: 110%;
+    }
+    .bottom{
+        margin-top: 3%;
+        margin-left:85%;
+    }
+    .btn:active{
+        color: black;
+    }
+   .btn:hover{
+       text-decoration: none;
+   }
+    </style>
+
+   
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand mb-0 h1" href="{% url 'twolink' %}">{{shop}}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'twolink' %}"> Home<span class="sr-only">(current)</span></a>
+          </li>
+              <li class="nav-item active">
+              <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
+            </li>
+  
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <a href="{% url 'login' %}"  class="btn btn-dark my-2 my-sm-0"  type="submit">  Logout</a>
+          
+        </form>
+      </div>
+    </nav>
+
+
+    
+        
+        <p id='head'> <strong>Welcome to Bill Generator</strong> </p>
+   
+
+
+<hr>
+
+
+<div id='body1'>
+<div class="container">
+<p>Steps to use this app</p>
+<ol>
+<li><p>Register your company name</p> <p> Note : Company code should be unique</p> </li>
+<li><p>Login with company code</p></li>
+
+<dl>
+<li><p>Have two use cases </p></li>
+<div class="container">
+
+    <dd> <strong>Admin  :</strong>  Can add available items, Note: To access Admin page need Admin Code.</dd>
+    <dd> <strong>Cashier :</strong> Can view the items given by admin. Then Add items and generate the bill.</dd>
+  
+
+</div>
+</dl>
+</ol>
+</div>
+
+</div>
+      
+
+
+
+
+  <div class='bottom'>
+        <dd> Developed By,</dd>
+        <dd>Shakthi R</dd>
+    
+  
+    
+    </div>   
+
+    {%endblock %}

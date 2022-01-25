@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{%block title%}
+ Delete Item
+ {%endblock %}
+{%block content%}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/delete.css'%}">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand mb-0 h1" href="{% url 'twolink' %}">{{shop}}</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'twolink' %}"> Home<span class="sr-only">(current)</span></a>
+        </li>
+            <li class="nav-item active">
+            <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
+          </li>
+
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <a href="{% url 'login' %}"  class="btn btn-dark my-2 my-sm-0"  type="submit">  Logout</a>
+        
+      </form>
+    </div>
+  </nav>
+
+
+
+
+<form method="post" action="">
+    {% csrf_token %}
+
+
+    <div class="container">
+
+
+      <div class="sw">
+              <p style=" font-size: 240%;">  Are you sure to delete?</p>
+
+                <table  style="margin-left: 10%;">
+
+                        <thead>
+                            <tr>
+                                <th>
+                                  <button type="submit" class='bt' >
+                                    <i class="far fa-trash-alt"></i> 
+                                </button>
+
+                                </th>
+                                <th style="padding-left: 100%;">
+                                  <a href="{% url 'display' %}" class='bc'><i class="fas fa-times"></i></a>
+                                </th>
+                            </tr>
+                        </thead>
+
+                </table>
+
+
+    </div>
+
+
+  </div>
+
+ 
+   </form>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ {%endblock %}

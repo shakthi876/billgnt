@@ -1,0 +1,43 @@
+
+  .wrap{display:flex;}
+  .box{
+      margin-top: 4%;
+      height: 100vh;
+      width: 60vw;
+      overflow: scroll;
+      
+  }
+ .righti{
+   margin-left: 3%;
+   margin-top: 15%;
+ }
+label
+{
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+  /* Style the image inside the centered container, if needed */
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 10px;
+  }
+  
+  .grid-container > div {
+    
+    border: 1px  rgb(243, 236, 236);
+    padding-left: 10%;
+  }
+
+.next{
+ margin-left: 39%;
+}
+
+.btn-light{
+  background-color: #212529;
+}
+
+body{
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+}

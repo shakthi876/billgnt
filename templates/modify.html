@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}
+Modify Items
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand mb-0 h1" href="{% url 'twolink' %}">{{shop}}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'twolink' %}"> Home<span class="sr-only">(current)</span></a>
+          </li>
+              <li class="nav-item active">
+              <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
+            </li>
+  
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <a href="{% url 'login' %}"  class="btn btn-dark my-2 my-sm-0"  type="submit">  Logout</a>
+          
+        </form>
+      </div>
+    </nav>
+
+
+
+<link rel="stylesheet" href="{% static 'css/admindisplay.css'%}">
+
+<br><br>
+
+<div class="modify-center">
+  {% for message in messages %}
+  <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+      <strong>Message: </strong>{{ message }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  
+  {% endfor %}
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <table class='styled-tab'>
+                            {{form}}
+                        </table>
+                            
+                    <br>
+                    <div style="padding-left: 15%;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="padding-left: 0%;"> <input type="submit" value="Update"  class='button-30'/></th>
+                                    <th style="padding-left: 0%;"> <a href="{% url 'display' %}" class='button-30' >Cancel</a>
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
+
+                    </div>
+
+       
+                                <br> <br>
+                        </form>
+                   
+                        </tr>
+
+</div>
+{% endblock%}

@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block title %}
+Home
+{% endblock %}
+
+{% block content%}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/twolinkstyle.css'%}">
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+    <a class="navbar-brand mb-0 h1" href="">{{name}}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href=""> <span class="sr-only">(current)</span></a>
+        </li>
+            <li class="nav-item active">
+            <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
+          </li>
+
+
+         <!--  <li class="nav-item">
+            <a class="nav-link" href="{% url 'search' %}">Cashier</a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'adminlogin'  %}">Admin</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">Change Admin Password</a>
+          </li>
+
+            -->
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <a href="{% url 'login' %}"  class="btn btn-dark my-2 my-sm-0" type="submit"> Logout</a>
+        
+      </form>
+    </div>
+  </nav>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  <div class="grid-container">
+    <div class="grid-item">  <div id='hideMe'> Hello, {{ name}} Welcomes you</div>   </div>
+    <div class="grid-item"></div>
+    <div class="grid-item" id='s'>{{d1}}, {{time}}</div>
+ 
+  </div>
+ 
+  
+ 
+  
+<div class="links">
+
+
+
+    
+<table style="font-size: large; " >
+    <thead>
+        <th></th>
+    </thead>
+    <tbody>
+      <div class="t">
+        <tr style="border-left: 6px ridge; " > <td class="c"><a class="nav-link" id='check'  href="{% url 'adminlogin'  %}">Admin</a></td>  </tr> 
+        
+      </div>
+        <tr><td> <hr></td></tr>
+        
+        <tr style="border-left: 6px ridge"> <td class="c"><a class="nav-link" id='check' href="{% url 'search' %}">Cashier</a></td></tr>
+       
+      
+        <tr><td> <hr></td></tr>
+      
+        <tr style="border-left: 6px ridge" > <td class="c"><a class="nav-link" id='check' href="{% url 'how' %}">How to Use</a></td></tr>
+    </tbody>
+
+
+</table>
+
+</div>
+
+
+
+
+<div class='links'>
+ 
+
+
+            
+  
+
+
+  
+</div>
+
+{% endblock%}

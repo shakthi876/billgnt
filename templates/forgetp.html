@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}
+Forgetpass 
+{% endblock %}
+
+{% block content%}
+
+
+
+<style>
+
+.overall{
+    margin-left: 36%;
+    margin-top: 12%;
+    
+    margin-right:30%;
+}
+ 
+.ce{
+    margin-left: 25%;
+}
+
+</style>
+
+
+
+
+  
+    
+   <div class='overall'>
+
+  
+
+    
+
+
+<hr>
+<div class="container">
+    <form  method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+        <h4>Forget Password</h4> <hr>
+                       
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+    <strong>Message: </strong>{{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    {% endfor %}     
+
+         
+                            <label for="p"> Company Code</label>
+                            <input type="text" id='p' placeholder="Company Code" name="username" class="form-control" aria-describedby="Help"  required>
+                            <small id="Help" class="form-text text-muted">Company code is case-sensitive</small>
+          </div>
+<div class="ce">
+
+
+    <input type="submit"   class="btn btn-success" value="Proceed">
+    <a href="{% url 'login' %}" class="btn btn-dark" style="margin-left: 4%;">Cancel</a>
+    
+</div>
+    </form>
+
+
+</div>
+    <hr>
+</div> 
+
+{% endblock%}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}
+Login 
+{% endblock %}
+
+{% block content%}
+{% for message in messages %}
+{{ message }}
+{% endfor %}
+<form action="" method="post">
+ {% csrf_token %}
+ Enter the Admin password:
+ <input type="password" name="pass1" id="">
+ Re-type
+ <input type="password" name="pass2" id="">
+</form>
+{% endblock%}

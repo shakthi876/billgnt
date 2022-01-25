@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}
+Login 
+{% endblock %}
+
+{% block content%}
+
+
+{% for message in messages %}
+{{ message }}
+{% endfor %}
+
+<form action="" method='POST'>
+    {% csrf_token %}
+    Enter Company name:
+    <input type="text" name="name" id="">
+    Enter the User password : 
+    <input type="password" name="pass" id="">
+    <input type="submit" value="Continue">
+</form>
+{% endblock%}

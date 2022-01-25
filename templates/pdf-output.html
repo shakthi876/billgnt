@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <title>Pdf Output</title>
+    <style>
+        @page {
+            size: "A4";
+            margin: 2.5cm, 1.5cm, 3.5cm, 1.5cm;
+
+            @top-center {
+                content: "Muruagan Kadai"
+            }
+            @bottom-right{
+                content: "Page" counter(page) " of " counter(pages);             
+            }
+            
+        } 
+     
+    </style>
+</head>
+<body>
+  <br> <br>
+    <table>
+        <thead>
+            <th>
+                Date {{ date }}
+            </th>
+            <th>
+                <h1 style="padding-left: 20%;" > Welcome to Muruagan Kadai</h1>
+            </th>
+        </thead>
+
+    </table>
+ <br>
+
+    Items Bought <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th cope="col"> No </th>
+                <th cope="col">Item Name</th>
+                <th cope="col">Price</th>
+                 <th cope="col">Quantity</th>
+                <th cope="col">Total</th>
+
+            </tr>
+
+        </thead>
+        <tbody>
+        {%for item in expenses %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ item.Product_name }}</td>
+            <td>{{ item.Price }}</td>
+            <td>{{ item.Quantity }}</td>
+            <td>{{ item.Total }}</td>
+            {% endfor %}
+        </tr>
+    </tbody>
+       
+    </table>
+<br>
+<br>
+
+    <div style="text-align: center;">
+
+        <h5>
+            Total amount to be paid = Rs. {{total}}  
+           </h5> 
+             Thank You! Visit Again... 
+
+    </div>
+          
+</body>
+</html>

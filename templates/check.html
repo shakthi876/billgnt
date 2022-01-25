@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}
+Search
+{% endblock %}
+
+{% block content%}
+
+{% load static %}
+
+  <link rel="stylesheet" href="{% static 'css/cashiersearch.css'%}">
+  <link rel="stylesheet" href="{% static 'css/cashiercheck.css'%}">
+
+
+
+<div class="top-order">
+    <br>
+          <h2 style="text-align: center; font-size: 250%;"> <strong>America Murugan kadai</strong>     </h2>
+            
+            <div >
+
+                <a href="{% url 'search' %}" class='top-logout'><strong> Back</strong></a>
+                
+            </div>
+                
+        </div> 
+        <h2>Details of Items Available</h2>
+        <br><br>
+
+<div class="container"  >
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                <th>Item Id</th>
+                <th> Item Name</th></tr>
+            </thead>
+            <tbody>
+                {%for item in items%}
+                <tr>
+                    <td> {{ item.Product_Id }}</td>
+                    <td>{{ item.Product_name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+            
+                
+    </div>
+</div>
+
+{% endblock %}
