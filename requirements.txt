@@ -38,4 +38,5 @@ virtualenv-clone==0.5.7
 virtualenvwrapper-win==1.2.6
 weasyprint==54.0
 webencodings==0.5.1
+whitenoise==5.3.0
 zopfli==0.1.9
